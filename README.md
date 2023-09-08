@@ -1,2 +1,2 @@
-# Multiplicitous-Life
-We are partial to life.
+# Multiplicitous
+Partial to life.
