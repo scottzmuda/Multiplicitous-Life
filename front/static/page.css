@@ -1,0 +1,81 @@
+body{
+}
+img.feature{
+	width:100%;
+}
+
+#map{
+	height: calc(100% - 1.4em);
+}
+
+.article-grid#living_things{ 
+	display: grid;
+	grid-template-columns: 13fr 8fr 13fr;
+	grid-template-areas:
+		"a a a"
+		"b b c"
+		"d e e"
+		"g g g";
+}
+
+.article-grid#writings{ 
+	display: grid;
+	grid-template-columns: 13fr 8fr 13fr;
+	grid-template-areas:
+		"a a a"
+		"b b c"
+		"f f f";
+}
+
+.article-grid > div{
+	padding: .5em;
+}
+
+.article-grid div.article-header{
+	grid-area: a;
+ 	border-image: linear-gradient(to right, var(--fg-color), var(--fg-color), var(--bg-color), var(--fg-color), var(--fg-color)) 30;
+ 	border-width: 0 0 1px 0;
+  	border-style: solid;
+
+}
+.article-grid div.article-image{
+	grid-area: b;
+	aspect-ratio: 1/1;
+}
+.article-grid div.top-right{
+	grid-area: c;
+	border-image: linear-gradient(to top right, var(--bg-color), var(--fg-color), var(--bg-color)) 30;
+	border-width: 0 0 1px 1px;
+	border-style: solid;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	align-items: flex-start;
+}
+.article-grid div.bottom-left{
+	grid-area: d;
+	border-image: linear-gradient(to bottom left, var(--bg-color), var(--fg-color), var(--bg-color)) 30;
+	border-width: 1px 1px 0 0;
+	border-style: solid;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-end;
+	text-align: right;
+}
+.article-grid div.bottom-right{
+	grid-area: e;
+	aspect-ratio: 1/1;
+}
+
+.article-grid div.bottom{
+	grid-area: g;
+ 	border-image: linear-gradient(to right, var(--fg-color), var(--fg-color), var(--bg-color), var(--fg-color), var(--fg-color)) 30;
+ 	border-width: 1px 0 0 0;
+  	border-style: solid;
+
+}
+
+.article-grid div.article-body{
+	grid-area: f;
+}

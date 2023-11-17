@@ -1,0 +1,50 @@
+img.content-image{
+	height:5em; /*stops content image from loading too big */
+}
+
+div.content-image-container{
+	display: inline; /* makes image container behave as inline */
+	float: left; /* not sure why this is needed but width doesn't work if this isn't set */
+	width: 5em; /*preset width of image so text doesn't move when loading */
+	margin: 0 1em 0 0; /* add margin betweeen image and text */
+}
+
+div.content-name{
+	display: inline;
+ 	float: left; /* not sure why this is needed but width doesn't work if this isn't set */
+	width: calc(100% - 6em); /*stop from overflowing content item */
+	margin: 1.8em 0; /* 1.8em equals the item height minus the line-height (all divided by 2) */
+}
+
+.article-grid{ 
+	display: grid;
+	grid-template-areas:
+		"a"
+		"b";
+}
+
+.article-grid > div{
+	padding: .5em;
+}
+
+.article-grid div.top{
+	grid-area: a;
+}
+
+.article-grid div.content:first-of-type{
+	grid-area: b;
+}
+a.content{
+	padding: .5em;
+	border-image: linear-gradient(to right, var(--fg-color), var(--fg-color), var(--bg-color), var(--fg-color), var(--fg-color)) 30;
+	border-width: 1px 0 0 0;
+	border-style: solid;
+}
+
+a.content:hover {
+  background-color: var(--mg-color);
+}
+
+h1{
+	display: inline;
+}
