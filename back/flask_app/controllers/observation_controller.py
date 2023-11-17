@@ -7,6 +7,8 @@ def get_observations():
     observations = Observation.get_all()
     observation_data = []
     for observation in observations:
+        observation.fetch_formal_kinds()
+        observation.fetch_common_kinds()
         observation_data.append({
             'id': observation.id,
             'createdon': observation.createdon,
@@ -18,6 +20,9 @@ def get_observations():
             'long_deg': observation.long_deg,
             'note': observation.note,
             'time_s': observation.time_s,
+            'name_id': observation.name_id,
+            'common_kinds': observation.common_kinds,
+            'formal_kinds': observation.formal_kinds
         })
     return jsonify(observation_data)
 
@@ -32,6 +37,7 @@ def get_observation_by_time(time_s):
             'createdon': observation.createdon,
             'modifiedon': observation.modifiedon,
             'creator_id': observation.creator_id,
+            'name_id': observation.name_id,
             'elev_m': observation.elev_m,
             'image': observation.image,
             'lat_deg': observation.lat_deg,
