@@ -2,7 +2,7 @@ from flask_app import app
 from flask import jsonify
 from flask_app.models.observation import Observation
 
-@app.route('/o', subdomain='api', methods=['GET'])
+@app.route('/api/o', methods=['GET'])
 def get_observations():
     observations = Observation.get_all()
     observation_data = []
@@ -21,7 +21,7 @@ def get_observations():
         })
     return jsonify(observation_data)
 
-@app.route('/o/<int:time_s>', subdomain='api', methods=['GET'])
+@app.route('/api/o/<int:time_s>', methods=['GET'])
 def get_observation_by_time(time_s):
     observation = Observation.get_observation_by_time({'time_s': time_s})
     observation.fetch_formal_kinds()
