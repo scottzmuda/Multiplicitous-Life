@@ -1,0 +1,75 @@
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg-color: #e8e2d5;
+    --mg-color: #f0eadd;
+    --fg-color: #f8f1e4;
+    --font-color: #745b59;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: #464646;
+    --mg-color: #4e4e4e;
+    --fg-color: #555555;
+    --font-color: #f1e5c7;
+  }
+}
+
+html {
+  color: var(--font-color); /*-global font color */
+  background-color: var(--bg-color); /*global background color*/
+  font-family: -apple-system-ui-serif, ui-serif, 'Georgia', serif; /*global font*/
+  font-size: 1em; /*-global font size, good practice to use 'em units' */
+  line-height: 1.4em; /*-global line height, (not sure reason for 1.4) */
+  user-select: none; /*-as default make nothing selectable */
+  -webkit-user-select: none; /*-as default make nothing selectable (apple specific attribute) */
+}
+
+body{
+  margin: .5em; /*creates space between content container and edge of viewport when width=100%*/
+}
+
+article.article-grid{
+  background-color: var(--fg-color); /* content background color */
+  width: 100%; /*default behavior is for element to take 100% of width*/
+  max-width: 650px; /*if available space is >650px width, no longer is 100%*/
+  margin: 0 auto; /*auto margin for left and right allows element to be centered when width=650px*/
+  border-radius: 12px; /* content window corners */
+}
+
+h1{
+  line-height: 1.4em; /*does not inherit from <html> for some reason*/
+  margin: 0; /*default margin is massive*/
+  user-select: contain;
+  -webkit-user-select: text;
+  font-size: 2em;
+}
+
+a:link, a:visited {
+  text-decoration: none;
+  color: var(--font-color); /*global link color*/
+}
+
+a{
+  user-select: contain;
+  -webkit-user-select: text;
+}
+
+a.nav-create, a.nav-login, a.nav-logout, a.close-page{
+  font-size: 2em;
+  font-weight: 100;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+nav{
+  float: right;
+}
+
+a.nav-login{
+  color: rgb(48, 209, 88);
+}
+a.nav-logout{
+  color: rgb(255, 69, 58);
+}

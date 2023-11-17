@@ -18,6 +18,7 @@ class Observation:
         self.createdon = data['createdon']
         self.modifiedon = data['modifiedon']
         self.creator_id = data['creator_id']
+        self.name_id = data['name_id']
 
         #kinds
         self.common_kinds = []
@@ -27,9 +28,14 @@ class Observation:
     def get_all(cls):
         query = """
         SELECT 
-            o.id, o.image, o.note, o.time_s, o.lat_deg, o.long_deg, o.elev_m, o.createdon, o.modifiedon, o.creator_id
+            o.*, c.name_id
         FROM 
             observations o
+            JOIN creators c on o.creator_id = c.id
+        WHERE
+            o.status != 1 OR o.status IS NULL
+        ORDER BY
+            o.time_s desc
         """
         results = connectToMySQL().query_db(query)
         observations = []
@@ -40,8 +46,9 @@ class Observation:
     @classmethod
     def get_observation_by_time( cls, data ):
         query = """
-        SELECT * 
-        FROM observations o 
+        SELECT o.*, c.name_id
+        FROM observations o
+        JOIN creators c on o.creator_id = c.id
         WHERE o.time_s = %(time_s)s
         """
         results = connectToMySQL().query_db(query, data)
@@ -81,3 +88,4 @@ class Observation:
         data = {'observation_id': self.id}
         results = connectToMySQL().query_db(query, data)
         self.formal_kinds = [result['name'] for result in results]
+        self.formal_kinds.reverse()
